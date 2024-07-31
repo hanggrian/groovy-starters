@@ -1,6 +1,8 @@
 package com.johndoe.library
 
-class Views {
+final class Views {
+    private Views() {}
+
     static View create() {
         View view = new View()
         view.setBounds(10, 10, 100, 40)

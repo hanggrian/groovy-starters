@@ -1,16 +1,16 @@
 [versions]
-jdk = "8"
-groovy = "3.0.18"
-codenarc = "3.3.0"
+jdk = "11"
+groovy = "3.0.22"
+codenarc = "3.5.0"
 
 [plugins]
-git-publish = "org.ajoberstar.git-publish:3.0.1" # max for jdk8
+git-publish = "org.ajoberstar.git-publish:4.2.2"
 pages = "com.hendraanggrian.pages:0.1"
 
 [libraries]
 # lint
-rulebook-codenarc = "com.hendraanggrian.rulebook:rulebook-codenarc:0.4"
+rulebook-codenarc = "com.hanggrian.rulebook:rulebook-codenarc:0.1"
 # main
 groovy = { module = "org.codehaus.groovy:groovy-all", version.ref = "groovy" }
 # test
-truth = "com.google.truth:truth:1.1.5"
+truth = "com.google.truth:truth:1.4.4"

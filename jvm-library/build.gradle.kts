@@ -22,10 +22,7 @@ subprojects {
             .set(JavaLanguageVersion.of(libs.versions.jdk.get().toInt()))
     }
     plugins.withType<CodeNarcPlugin>().configureEach {
-        configure<CodeNarcExtension> {
-            toolVersion = libs.versions.codenarc.get()
-            configFile = rootDir.resolve("rulebook_codenarc.xml")
-        }
+        the<CodeNarcExtension>().toolVersion = libs.versions.codenarc.get()
     }
     plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
         configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
@@ -34,7 +31,7 @@ subprojects {
                     com.vanniktech.maven.publish.JavadocJar.Javadoc()
                 )
             )
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)

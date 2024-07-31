@@ -3,6 +3,8 @@ package com.johndoe.app
 import javax.swing.JFrame
 
 class App {
+    private App() {}
+
     static void main(String[] args) {
         View view = new View()
         view.setBounds(10, 10, 100, 40)

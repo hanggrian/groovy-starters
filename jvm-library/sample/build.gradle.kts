@@ -10,5 +10,5 @@ application.mainClass.set("com.example.App")
 dependencies {
     implementation(libs.groovy)
     implementation(project(":$releaseArtifact"))
-    implementation(project(":$releaseArtifact-ext"))
+    implementation(project(":$releaseArtifact-extension"))
 }

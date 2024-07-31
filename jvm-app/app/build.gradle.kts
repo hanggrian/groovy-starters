@@ -11,10 +11,7 @@ java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get(
 
 application.mainClass.set("$releaseGroup.app.App")
 
-codenarc {
-    toolVersion = libs.versions.codenarc.get()
-    configFile = rootDir.resolve("rulebook_codenarc.xml")
-}
+codenarc.toolVersion = libs.versions.codenarc.get()
 
 dependencies {
     codenarc(libs.rulebook.codenarc)
