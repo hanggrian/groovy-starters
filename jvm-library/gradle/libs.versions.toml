@@ -6,7 +6,7 @@ codenarc = "3.5.0"
 [plugins]
 maven-publish = "com.vanniktech.maven.publish.base:0.29.0"
 git-publish = "org.ajoberstar.git-publish:4.2.2"
-pages = "com.hendraanggrian.pages:0.1"
+pages = "com.hanggrian.pages:0.1"
 
 [libraries]
 # lint
