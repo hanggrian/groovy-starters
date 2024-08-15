@@ -1,3 +1,9 @@
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.MavenPublishBasePlugin
+import com.vanniktech.maven.publish.SonatypeHost
+
 val developerId: String by project
 val developerName: String by project
 val developerUrl: String by project
@@ -6,6 +12,9 @@ val releaseArtifact: String by project
 val releaseVersion: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
+
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 
 plugins {
     alias(libs.plugins.maven.publish) apply false
@@ -18,20 +27,15 @@ allprojects {
 
 subprojects {
     plugins.withType<JavaPlugin>().configureEach {
-        the<JavaPluginExtension>().toolchain.languageVersion
-            .set(JavaLanguageVersion.of(libs.versions.jdk.get().toInt()))
+        the<JavaPluginExtension>().toolchain.languageVersion.set(jdkVersion)
     }
     plugins.withType<CodeNarcPlugin>().configureEach {
         the<CodeNarcExtension>().toolVersion = libs.versions.codenarc.get()
     }
-    plugins.withType<com.vanniktech.maven.publish.MavenPublishBasePlugin> {
-        configure<com.vanniktech.maven.publish.MavenPublishBaseExtension> {
-            configure(
-                com.vanniktech.maven.publish.JavaLibrary(
-                    com.vanniktech.maven.publish.JavadocJar.Javadoc()
-                )
-            )
-            publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    plugins.withType<MavenPublishBasePlugin> {
+        configure<MavenPublishBaseExtension> {
+            configure(JavaLibrary(JavadocJar.Javadoc()))
+            publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
             signAllPublications()
             pom {
                 name.set(project.name)
@@ -57,6 +61,15 @@ subprojects {
                     developerConnection.set("scm:git:ssh://git@github.com/$developerId/$releaseArtifact.git")
                 }
             }
+        }
+    }
+
+    tasks {
+        withType<JavaCompile>().configureEach {
+            options.release = jreVersion.asInt()
+        }
+        withType<GroovyCompile>().configureEach {
+            options.release = jreVersion.asInt()
         }
     }
 }

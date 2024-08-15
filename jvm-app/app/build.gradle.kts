@@ -1,5 +1,8 @@
 val releaseGroup: String by project
 
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+
 plugins {
     groovy
     application
@@ -7,7 +10,7 @@ plugins {
     jacoco
 }
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
+java.toolchain.languageVersion.set(jdkVersion)
 
 application.mainClass.set("$releaseGroup.app.App")
 
@@ -19,4 +22,13 @@ dependencies {
     implementation(libs.groovy)
 
     testImplementation(libs.truth)
+}
+
+tasks {
+    compileJava {
+        options.release = jreVersion.asInt()
+    }
+    compileGroovy {
+        options.release = jreVersion.asInt()
+    }
 }

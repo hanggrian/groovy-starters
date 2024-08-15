@@ -1,5 +1,6 @@
 [versions]
-jdk = "11"
+jdk = "21"
+jre = "8"
 groovy = "3.0.22"
 codenarc = "3.5.0"
 
