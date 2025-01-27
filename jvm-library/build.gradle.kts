@@ -58,7 +58,8 @@ subprojects {
                 scm {
                     url.set(releaseUrl)
                     connection.set("scm:git:https://github.com/$developerId/$releaseArtifact.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/$developerId/$releaseArtifact.git")
+                    developerConnection
+                        .set("scm:git:ssh://git@github.com/$developerId/$releaseArtifact.git")
                 }
             }
         }
