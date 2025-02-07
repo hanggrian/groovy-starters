@@ -32,4 +32,7 @@ tasks {
     compileGroovy {
         options.release = jreVersion.asInt()
     }
+    jacocoTestReport {
+        reports.xml.required = true
+    }
 }

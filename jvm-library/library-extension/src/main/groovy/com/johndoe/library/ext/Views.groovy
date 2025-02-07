@@ -1,4 +1,6 @@
-package com.johndoe.library
+package com.johndoe.library.ext
+
+import com.johndoe.library.View
 
 final class Views {
     private Views() {}

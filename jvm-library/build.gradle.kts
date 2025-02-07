@@ -72,6 +72,9 @@ subprojects {
         withType<GroovyCompile>().configureEach {
             options.release = jreVersion.asInt()
         }
+        withType<JacocoReport>().configureEach {
+            reports.xml.required = true
+        }
     }
 }
 
