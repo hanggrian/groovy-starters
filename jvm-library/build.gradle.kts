@@ -1,4 +1,8 @@
-import com.vanniktech.maven.publish.*
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.MavenPublishBaseExtension
+import com.vanniktech.maven.publish.MavenPublishBasePlugin
+import com.vanniktech.maven.publish.SonatypeHost
 
 val developerId: String by project
 val developerName: String by project

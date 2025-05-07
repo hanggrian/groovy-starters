@@ -2,8 +2,8 @@
 
 ![](https://github.com/hanggrian/groovy-starters/raw/assets/logo.png)
 
-Personal Gradle project templates with emphasis on **Groovy,** separated by
-target platform and kind of distribution.
+Common Gradle project templates with emphasis on **Groovy,** separated by target
+platform and kind of distribution.
 
 | | Plugins | Testing | Publishing | Website | Coverage | Max Heap Size
 --- | :---: | :---: | :---: | :---: | :---: | :---:
@@ -11,7 +11,7 @@ gradle-plugin | [Groovy] | [JUnit 4] | [Plugin Portal] | [Groovydoc], [Minimal] 
 jvm-app | [Groovy], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
 jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | &check; | 2GB
 
-## Groovy frameworks
+## Frameworks
 
 - JUnit testing framework with [Truth](https://truth.dev/) asserter.
 - [CodeNarc](https://codenarc.org/) code linter with third-party ruleset
@@ -45,7 +45,6 @@ jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | 
 [Application]: https://docs.gradle.org/current/userguide/application_plugin.html
 [JUnit 4]: https://junit.org/junit4/
 [JUnit 5]: https://junit.org/junit5/
-[Robolectric]: https://robolectric.org/
 [Plugin Portal]: https://plugins.gradle.org/
 [Maven Central]: https://central.sonatype.com/
 [Groovydoc]: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.javadoc.Groovydoc.html

@@ -25,7 +25,7 @@ class MyPluginTest {
                     Files.newOutputStream(
                         testProjectDir.newFile('settings.gradle.kts').toPath()
                     ),
-                    StandardCharsets.UTF_8)
+                    StandardCharsets.UTF_8),
             )
         ) {
             writer.write('rootProject.name = "functional-test"')
@@ -45,14 +45,14 @@ class MyPluginTest {
             new BufferedWriter(
                 new OutputStreamWriter(
                     Files.newOutputStream(buildFile.toPath()),
-                    StandardCharsets.UTF_8)
+                    StandardCharsets.UTF_8),
             )
         ) {
             writer.write(
                 'plugins {\n' +
                     '    id("com.johndoe.plugin")\n' +
                     '}\n' +
-                    '\n'
+                    '\n',
             )
         }
         assertThat(
@@ -61,8 +61,8 @@ class MyPluginTest {
                     runner
                         .withArguments('myTask')
                         .build()
-                        .task(':myTask')
-                ).getOutcome()
+                        .task(':myTask'),
+                ).getOutcome(),
         ).isEqualTo(SUCCESS)
     }
 }
