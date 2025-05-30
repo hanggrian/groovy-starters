@@ -6,7 +6,7 @@ class App {
     private App() {}
 
     static void main(String[] args) {
-        View view = new View()
+        JLabelImpl view = new JLabelImpl()
         view.setBounds(10, 10, 100, 40)
 
         JFrame frame = new JFrame()

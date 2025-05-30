@@ -1,3 +1,6 @@
+import org.gradle.internal.impldep.junit.runner.Version.id
+import org.gradle.internal.impldep.org.apache.http.client.methods.RequestBuilder.options
+
 val developerId: String by project
 val releaseArtifact: String by project
 val releaseGroup: String by project
@@ -38,7 +41,7 @@ dependencies {
     implementation(libs.groovy.all)
 
     testImplementation(gradleTestKit())
-    testImplementation(libs.truth)
+    testImplementation(libs.bundles.junit4)
 }
 
 tasks {

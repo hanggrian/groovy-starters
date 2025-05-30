@@ -15,4 +15,13 @@ rulebook-codenarc = "com.hanggrian.rulebook:rulebook-codenarc:0.1"
 # main
 groovy-all = { module = "org.codehaus.groovy:groovy-all", version.ref = "groovy" }
 # test
+junit = "junit:junit:4.13.2"
+mockito-core = "org.mockito:mockito-core:5.18.0"
 truth = "com.google.truth:truth:1.4.4"
+
+[bundles]
+junit4 = [
+  "junit",
+  "mockito-core",
+  "truth",
+]

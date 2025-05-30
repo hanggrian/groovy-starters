@@ -12,8 +12,7 @@ import static com.google.common.truth.Truth.assertThat
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 
 class MyPluginTest {
-    @Rule
-    public TemporaryFolder testProjectDir = new TemporaryFolder()
+    @Rule public TemporaryFolder testProjectDir = new TemporaryFolder()
     private File buildFile
     private GradleRunner runner
 
@@ -25,12 +24,13 @@ class MyPluginTest {
                     Files.newOutputStream(
                         testProjectDir.newFile('settings.gradle.kts').toPath()
                     ),
-                    StandardCharsets.UTF_8),
+                    StandardCharsets.UTF_8,
+                ),
             )
         ) {
-            writer.write('rootProject.name = "functional-test"')
+            writer.write 'rootProject.name = "functional-test"'
         }
-        buildFile = testProjectDir.newFile('build.gradle.kts')
+        buildFile = testProjectDir.newFile 'build.gradle.kts'
         runner =
             GradleRunner
                 .create()
@@ -45,15 +45,15 @@ class MyPluginTest {
             new BufferedWriter(
                 new OutputStreamWriter(
                     Files.newOutputStream(buildFile.toPath()),
-                    StandardCharsets.UTF_8),
+                    StandardCharsets.UTF_8
+                ),
             )
         ) {
-            writer.write(
-                'plugins {\n' +
-                    '    id("com.johndoe.plugin")\n' +
-                    '}\n' +
-                    '\n',
-            )
+            writer.write '''
+                plugins {
+                    id("com.johndoe.plugin")
+                }
+                '''
         }
         assertThat(
             Objects
@@ -63,6 +63,6 @@ class MyPluginTest {
                         .build()
                         .task(':myTask'),
                 ).getOutcome(),
-        ).isEqualTo(SUCCESS)
+        ).isEqualTo SUCCESS
     }
 }

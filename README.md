@@ -13,7 +13,8 @@ jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | 
 
 ## Frameworks
 
-- JUnit testing framework with [Truth](https://truth.dev/) asserter.
+- JUnit testing framework with [Mockito](https://site.mockito.org/) suite and
+  [Truth](https://truth.dev/) asserter.
 - [CodeNarc](https://codenarc.org/) code linter with third-party ruleset
   [Rulebook](https://github.com/hendraanggrian/rulebook/).
 - [JaCoCo](https://docs.gradle.org/current/userguide/jacoco_plugin.html) code
