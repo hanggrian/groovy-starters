@@ -2,8 +2,8 @@ val releaseGroup: String by project
 val releaseVersion: String by project
 val releaseArtifact: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 allprojects {
     group = releaseGroup
@@ -17,7 +17,7 @@ plugins {
     jacoco
 }
 
-java.toolchain.languageVersion.set(jdkVersion)
+java.toolchain.languageVersion.set(javaCompileVersion)
 
 application.mainClass.set("$releaseGroup.$releaseArtifact.App")
 
@@ -36,10 +36,10 @@ dependencies {
 
 tasks {
     compileJava {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     compileGroovy {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     test {
         useJUnitPlatform()

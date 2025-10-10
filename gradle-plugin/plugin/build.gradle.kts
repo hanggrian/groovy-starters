@@ -1,14 +1,11 @@
-import org.gradle.internal.impldep.junit.runner.Version.id
-import org.gradle.internal.impldep.org.apache.http.client.methods.RequestBuilder.options
-
 val developerId: String by project
 val releaseArtifact: String by project
 val releaseGroup: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 plugins {
     groovy
@@ -16,7 +13,7 @@ plugins {
     alias(libs.plugins.gradle.publish)
 }
 
-java.toolchain.languageVersion.set(jdkVersion)
+java.toolchain.languageVersion.set(javaCompileVersion)
 
 codenarc.toolVersion = libs.versions.codenarc.get()
 
@@ -38,7 +35,7 @@ dependencies {
 
     compileOnly(gradleApi())
 
-    implementation(libs.groovy.all)
+    implementation(libs.groovy)
 
     testImplementation(gradleTestKit())
     testImplementation(libs.bundles.junit4)
@@ -46,10 +43,10 @@ dependencies {
 
 tasks {
     compileJava {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     compileGroovy {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     groovydoc {
         destinationDir = layout.buildDirectory.dir("docs/${project.name}").get().asFile
