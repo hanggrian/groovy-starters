@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.JavaLibrary
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import com.vanniktech.maven.publish.MavenPublishBasePlugin
+import kotlin.text.set
 
 val developerId: String by project
 val developerName: String by project
@@ -13,7 +14,7 @@ val releaseDescription: String by project
 val releaseUrl: String by project
 
 val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
-val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
+val javaSupportVersion = JavaVersion.toVersion(libs.versions.java.support.get())
 
 plugins {
     alias(libs.plugins.maven.publish) apply false
@@ -26,7 +27,11 @@ allprojects {
 
 subprojects {
     plugins.withType<JavaPlugin>().configureEach {
-        the<JavaPluginExtension>().toolchain.languageVersion.set(javaCompileVersion)
+        configure<JavaPluginExtension> {
+            toolchain.languageVersion.set(javaCompileVersion)
+            sourceCompatibility = javaSupportVersion
+            targetCompatibility = javaSupportVersion
+        }
     }
     plugins.withType<CodeNarcPlugin>().configureEach {
         the<CodeNarcExtension>().toolVersion = libs.versions.codenarc.get()
@@ -65,14 +70,8 @@ subprojects {
     }
 
     tasks {
-        withType<JavaCompile>().configureEach {
-            options.release = javaSupportVersion.asInt()
-        }
-        withType<GroovyCompile>().configureEach {
-            options.release = javaSupportVersion.asInt()
-        }
         withType<Groovydoc>().configureEach {
-            destinationDir = layout.buildDirectory.dir("docs/${project.name}").get().asFile
+            destinationDir = layout.buildDirectory.dir("docs/${project.name}/").get().asFile
         }
         withType<Test>().configureEach {
             useJUnitPlatform()

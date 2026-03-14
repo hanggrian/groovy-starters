@@ -10,8 +10,11 @@ application.mainClass.set("com.example.App")
 
 dependencies {
     codenarc(libs.rulebook.codenarc)
-    
+
     implementation(project(":$releaseArtifact"))
     implementation(project(":$releaseArtifact-extension"))
     implementation(libs.groovy.all)
+    implementation(libs.dagger)
+
+    annotationProcessor(libs.dagger.compiler)
 }

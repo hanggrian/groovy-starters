@@ -1,4 +1,4 @@
-package com.example
+package com.johndoe.application
 
 import java.awt.Font
 import javax.swing.JLabel
@@ -12,6 +12,7 @@ final class App {
         label.setBounds(50, 50, 300, 100)
 
         MainFrame frame = new MainFrame(label)
-        label.text = "${frame.stats.size} pixels at ${frame.stats.position}"
+        frame.title = 'My Application'
+        label.text = "${frame.stats.size} pixels"
     }
 }

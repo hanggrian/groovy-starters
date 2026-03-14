@@ -1,6 +1,6 @@
 # Groovy Starters
 
-![](https://github.com/hanggrian/groovy-starters/raw/assets/logo.png)
+![Logo](https://github.com/hanggrian/groovy-starters/raw/assets/logo.png)
 
 Common Gradle project templates with emphasis on **Groovy,** separated by target
 platform and kind of distribution.
@@ -8,7 +8,7 @@ platform and kind of distribution.
 | | Plugins | Testing | Publishing | Website | Coverage | Max Heap Size
 --- | :---: | :---: | :---: | :---: | :---: | :---:
 gradle-plugin | [Groovy] | [JUnit 4] | [Plugin Portal] | [Groovydoc], [Minimal] | &cross; | 2GB
-jvm-app | [Groovy], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
+jvm-application | [Groovy], [Application] | [JUnit 5] | &cross; | [Cayman] | &check; | 2GB
 jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | &check; | 2GB
 
 ## Frameworks
@@ -28,8 +28,10 @@ jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | 
     and [gitignore](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files/)
     file.
   - [EditorConfig](https://editorconfig.org/) enforces IDE settings.
-  - [CircleCI](https://circleci.com/) to run test every commit, also triggers
-    [Codecov](https://about.codecov.io/) integration within CircleCI.
+- [CircleCI](https://circleci.com/) workflow:
+  - Run tests, linters and push coverage to [Codecov](https://codecov.io/).
+  - Activate [Renovate](https://docs.renovatebot.com/) bot to alert out-of-date
+    dependencies.
 - Gradle build tool:
   - [Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html)
     scripts with properties delegation.

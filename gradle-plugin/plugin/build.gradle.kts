@@ -5,7 +5,7 @@ val releaseDescription: String by project
 val releaseUrl: String by project
 
 val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
-val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
+val javaSupportVersion = JavaVersion.toVersion(libs.versions.java.support.get())
 
 plugins {
     groovy
@@ -13,7 +13,11 @@ plugins {
     alias(libs.plugins.gradle.publish)
 }
 
-java.toolchain.languageVersion.set(javaCompileVersion)
+java {
+    toolchain.languageVersion.set(javaCompileVersion)
+    sourceCompatibility = javaSupportVersion
+    targetCompatibility = javaSupportVersion
+}
 
 codenarc.toolVersion = libs.versions.codenarc.get()
 
@@ -41,14 +45,6 @@ dependencies {
     testImplementation(libs.bundles.junit4)
 }
 
-tasks {
-    compileJava {
-        options.release = javaSupportVersion.asInt()
-    }
-    compileGroovy {
-        options.release = javaSupportVersion.asInt()
-    }
-    groovydoc {
-        destinationDir = layout.buildDirectory.dir("docs/${project.name}").get().asFile
-    }
+tasks.groovydoc {
+    destinationDir = layout.buildDirectory.dir("docs/${project.name}/").get().asFile
 }

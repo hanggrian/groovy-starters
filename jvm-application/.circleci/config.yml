@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  gradle: circleci/gradle@4.1.0
   codecov: codecov/codecov@5.4.3
 
 executors:

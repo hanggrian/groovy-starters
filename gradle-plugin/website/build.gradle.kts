@@ -11,7 +11,10 @@ plugins {
 }
 
 pages {
-    resources.from("src", "$rootDir/$releaseArtifact/build/docs/")
+    resources.from(
+        "src/",
+        "$rootDir/$releaseArtifact/build/docs/",
+    )
     styles.add("styles/prism-tomorrow.css")
     scripts.addAll(
         "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",

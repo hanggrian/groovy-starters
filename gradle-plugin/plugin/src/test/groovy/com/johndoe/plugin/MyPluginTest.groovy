@@ -1,5 +1,8 @@
 package com.johndoe.plugin
 
+import static com.google.common.truth.Truth.assertThat
+import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import org.gradle.testkit.runner.GradleRunner
@@ -8,29 +11,28 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
-import static com.google.common.truth.Truth.assertThat
-import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
-
 class MyPluginTest {
-    @Rule public TemporaryFolder testProjectDir = new TemporaryFolder()
+    @Rule
+    @SuppressWarnings('PublicInstanceField')
+    public final TemporaryFolder testProjectDir = new TemporaryFolder()
     private File buildFile
     private GradleRunner runner
 
     @Before
-    void setup() throws IOException {
+    void setup() {
         try (Writer writer =
             new BufferedWriter(
                 new OutputStreamWriter(
                     Files.newOutputStream(
-                        testProjectDir.newFile('settings.gradle.kts').toPath()
+                        testProjectDir.newFile('settings.gradle.kts').toPath(),
                     ),
                     StandardCharsets.UTF_8,
                 ),
             )
         ) {
-            writer.write 'rootProject.name = "functional-test"'
+            writer.write('rootProject.name = "functional-test"')
         }
-        buildFile = testProjectDir.newFile 'build.gradle.kts'
+        buildFile = testProjectDir.newFile('build.gradle.kts')
         runner =
             GradleRunner
                 .create()
@@ -40,20 +42,22 @@ class MyPluginTest {
     }
 
     @Test
-    void myTask() throws IOException {
+    void myTask() {
         try (Writer writer =
             new BufferedWriter(
                 new OutputStreamWriter(
                     Files.newOutputStream(buildFile.toPath()),
-                    StandardCharsets.UTF_8
+                    StandardCharsets.UTF_8,
                 ),
             )
         ) {
-            writer.write '''
+            writer.write(
+                '''
                 plugins {
                     id("com.johndoe.plugin")
                 }
-                '''
+                ''',
+            )
         }
         assertThat(
             Objects
