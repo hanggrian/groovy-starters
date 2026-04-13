@@ -31,8 +31,9 @@ for project in "${PROJECTS[@]}"; do
 
   echo '(1/4) Generating Gradle wrapper'
   cd "$project" || exit 1
-  update_gradle_wrapper 'distributionUrl' \
-    'https\\\://services.gradle.org/distributions/gradle-9.4.0-bin.zip'
+  update_gradle_wrapper \
+    'distributionUrl' \
+    'https\\\://services.gradle.org/distributions/gradle-9.4.1-bin.zip'
   ./gradlew -q wrapper
 
   echo '(2/4) Updating base'
@@ -40,9 +41,10 @@ for project in "${PROJECTS[@]}"; do
   update_libs 'java-support' '8'
   update_libs 'groovy' '4.0.30'
   update_libs 'codenarc' '3.7.0-groovy-4.0'
-  update_libs 'git-publish' 'org.ajoberstar.git-publish:5.1.3'
+  update_libs 'git-publish' 'org.ajoberstar.git-publish:6.0.0'
   update_libs 'pages' 'com.hanggrian.pages:0.3'
-  update_libs 'rulebook-codenarc' \
+  update_libs \
+    'rulebook-codenarc' \
     'com.hanggrian.rulebook:rulebook-codenarc:0.2'
   update_libs 'truth' 'com.google.truth:truth:1.4.5'
 
@@ -53,13 +55,15 @@ for project in "${PROJECTS[@]}"; do
     echo '(3/4) Updating JVM'
     update_libs 'dagger' "$dagger_version"
     update_libs 'junit' '5.14.3'
-    update_libs 'junit-platform-launcher' \
+    update_libs \
+      'junit-platform-launcher' \
       'org.junit.platform:junit-platform-launcher:1.14.3'
-    update_libs 'mockito-junit-jupiter' \
+    update_libs \
+      'mockito-junit-jupiter' \
       "org.mockito:mockito-junit-jupiter:$mockito_version"
   else
     echo '(3/4) Updating Gradle Publish'
-    update_libs 'gradle-publish' 'com.gradle.plugin-publish:2.1.0'
+    update_libs 'gradle-publish' 'com.gradle.plugin-publish:2.1.1'
     update_libs 'junit' 'junit:junit:4.13.2'
     update_libs 'mockito-core' "org.mockito:mockito-core:$mockito_version"
   fi

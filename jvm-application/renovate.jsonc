@@ -5,7 +5,8 @@
   "prCreation": "not-pending",
   "internalChecksFilter": "strict",
   "ignoreDeps": [
-    "cimg/openjdk",
-    "groovy"
+    // Groovy 5 requires java-support 11+
+    "org.apache.groovy:groovy",
+    "org.apache.groovy:groovy-all"
   ]
 }

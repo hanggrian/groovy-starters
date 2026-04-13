@@ -7,7 +7,7 @@ codenarc = "3.7.0-groovy-4.0"
 dagger = "2.59.2"
 
 [plugins]
-git-publish = "org.ajoberstar.git-publish:5.1.3"
+git-publish = "org.ajoberstar.git-publish:6.0.0"
 pages = "com.hanggrian.pages:0.3"
 
 [libraries]

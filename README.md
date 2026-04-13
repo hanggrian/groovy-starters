@@ -22,13 +22,13 @@ jvm-library | [Groovy] | [JUnit 5] | [Maven Central] | [Groovydoc], [Minimal] | 
 
 ## Project layout
 
-- GitHub project layout:
+- Root directory:
   - GitHub [README](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes/),
     [LICENSE](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository/),
     and [gitignore](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files/)
     file.
   - [EditorConfig](https://editorconfig.org/) enforces IDE settings.
-- [CircleCI](https://circleci.com/) workflow:
+- [GitHub Actions](https://docs.github.com/en/actions/) workflows:
   - Run tests, linters and push coverage to [Codecov](https://codecov.io/).
   - Activate [Renovate](https://docs.renovatebot.com/) bot to alert out-of-date
     dependencies.
