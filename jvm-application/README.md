@@ -1,8 +1,8 @@
-[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/johndoe/app/code-analysis.yml)](https://github.com/johndoe/app/actions/workflows/code-analysis.yml)
-[![Codecov](https://img.shields.io/codecov/c/gh/johndoe/app)](https://app.codecov.io/gh/johndoe/app/)
-[![Renovate](https://img.shields.io/badge/dependency-mend-blue)](https://developer.mend.io/github/johndoe/app/)
-[![GitHub Releases](https://img.shields.io/github/release/johndoe/app)](https://github.com/johndoe/app/releases/)
-[![Groovy](https://img.shields.io/badge/groovy-3+-informational)](https://groovy-lang.org/releasenotes/groovy-3.0.html)
+[![GitHub Actions](https://img.shields.io/github/actions/workflow/status/johndoe/application/code-analysis.yml)](https://github.com/johndoe/application/actions/workflows/code-analysis.yml)
+[![Codecov](https://img.shields.io/codecov/c/gh/johndoe/application)](https://app.codecov.io/gh/johndoe/application/)
+[![Renovate](https://img.shields.io/badge/dependency-mend-blue)](https://developer.mend.io/github/johndoe/application/)
+[![GitHub Releases](https://img.shields.io/github/release/johndoe/application)](https://github.com/johndoe/application/releases/)
+[![Java](https://img.shields.io/badge/java-8+-informational)](https://docs.oracle.com/javase/8/)
 
 # My Application
 
